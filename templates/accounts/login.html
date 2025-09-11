@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<style>
+  body {
+    background: linear-gradient(135deg, #e0e7ff 0%, #f0fdfa 100%);
+    min-height: 100vh;
+  }
+  .login-card {
+    animation: fadeInUp 0.8s cubic-bezier(.39,.575,.56,1.000) both;
+  }
+  @keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: none; }
+  }
+</style>
+<div class="flex items-center justify-center min-h-[80vh]">
+  <div class="login-card max-w-md w-full bg-white/80 backdrop-blur-lg shadow-2xl rounded-3xl p-10 border border-blue-100">
+    <div class="flex flex-col items-center mb-8">
+      <div class="bg-gradient-to-tr from-blue-500 to-cyan-400 p-3 rounded-full shadow-lg mb-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12A4 4 0 1 1 8 12a4 4 0 0 1 8 0zm2 6a6 6 0 0 0-12 0" /></svg>
+      </div>
+      <h2 class="text-3xl font-extrabold text-gray-800 tracking-tight">เข้าสู่ระบบ</h2>
+      <p class="text-gray-500 mt-1">ยินดีต้อนรับกลับ!</p>
+    </div>
+    <form method="post" class="space-y-7">{% csrf_token %}
+      {{ form.non_field_errors }}
+      <!-- Username -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-2">Username / Email</label>
+        <div class="relative">
+          <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-blue-400">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0 1 12 15c2.5 0 4.847.655 6.879 1.804M15 11a3 3 0 1 0-6 0 3 3 0 0 0 6 0z" /></svg>
+          </span>
+          {{ form.username|add_class:"w-full border border-blue-200 bg-white/80 rounded-xl pl-10 pr-3 py-2 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition placeholder-gray-400" }}
+        </div>
+      </div>
+      <!-- Password -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+        <div class="relative">
+          <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-blue-400">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm0 2c-2.21 0-4 1.79-4 4v1h8v-1c0-2.21-1.79-4-4-4z" /></svg>
+          </span>
+          {{ form.password|add_class:"w-full border border-blue-200 bg-white/80 rounded-xl pl-10 pr-3 py-2 focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition placeholder-gray-400" }}
+        </div>
+        <div class="text-right mt-2">
+          <a href="{% url 'password_reset' %}" class="text-sm text-blue-600 hover:underline">ลืมรหัสผ่าน?</a>
+        </div>
+      </div>
+      <!-- Submit -->
+      <button type="submit" class="w-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white py-3 rounded-xl font-bold shadow-lg hover:from-blue-600 hover:to-cyan-600 hover:scale-105 transition-all duration-200">
+        เข้าสู่ระบบ
+      </button>
+    </form>
+    <!-- Register -->
+    <p class="text-sm text-gray-600 mt-8 text-center">
+      ยังไม่มีบัญชี?
+      <a href="{% url 'register' %}" class="text-blue-600 font-semibold hover:underline">สมัครสมาชิก</a>
+    </p>
+  </div>
+</div>
+{% endblock %}

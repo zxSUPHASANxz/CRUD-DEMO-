@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="flex flex-col items-center justify-center min-h-[70vh] bg-gradient-to-br from-blue-100 via-white to-green-100 rounded-3xl shadow-xl p-10 animate-fadeIn">
+    <div class="bg-gradient-to-tr from-blue-500 to-green-400 p-4 rounded-full shadow-lg mb-6">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="10" stroke="white" stroke-width="2" fill="none"/><path d="M8 12a4 4 0 1 1 8 0 4 4 0 0 1-8 0z" fill="white" opacity=".7"/></svg>
+    </div>
+    <h1 class="text-4xl font-extrabold text-gray-800 mb-2 tracking-wide drop-shadow">Welcome to <span class="bg-gradient-to-r from-blue-500 to-green-400 bg-clip-text text-transparent">THE_ONE</span> Project 🚀</h1>
+    <p class="text-lg text-gray-600 mb-6">ระบบจัดการข้อมูล Mechanics และบัญชีผู้ใช้<br>สร้างด้วย Django + Tailwind CSS</p>
+    <a href="/login/" class="inline-block px-8 py-3 bg-gradient-to-r from-blue-500 to-green-400 text-white font-bold rounded-xl shadow-lg hover:scale-105 hover:from-blue-600 hover:to-green-500 transition-all duration-200">เริ่มต้นใช้งาน</a>
+</div>
+<style>
+    @keyframes fadeIn {
+        0% { opacity: 0; transform: translateY(40px); }
+        100% { opacity: 1; transform: none; }
+    }
+    .animate-fadeIn {
+        animation: fadeIn 1s cubic-bezier(.39,.575,.56,1.000) both;
+    }
+</style>
+{% endblock %}
