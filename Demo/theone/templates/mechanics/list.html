@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="bg-white shadow rounded-xl p-6">
+  <h2 class="text-xl font-bold mb-4">รายชื่อช่าง</h2>
+  <a href="{% url 'mechanic_create' %}" class="inline-block mb-4 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">+ เพิ่มช่าง</a>
+  <table class="w-full border-collapse">
+    <thead>
+      <tr class="bg-gray-200 text-left">
+        <th class="p-2 border">ชื่อ</th>
+        <th class="p-2 border">ความเชี่ยวชาญ</th>
+        <th class="p-2 border">เบอร์โทร</th>
+        <th class="p-2 border">จัดการ</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for m in items %}
+      <tr class="hover:bg-gray-50">
+        <td class="p-2 border">{{ m.name }}</td>
+        <td class="p-2 border">{{ m.expertise }}</td>
+        <td class="p-2 border">{{ m.phone }}</td>
+        <td class="p-2 border space-x-2">
+          <a href="{% url 'mechanic_edit' m.id %}" class="text-blue-600 hover:underline">แก้ไข</a>
+          <a href="{% url 'mechanic_delete' m.id %}" class="text-red-600 hover:underline">ลบ</a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr><td colspan="4" class="p-4 text-center text-gray-500">ยังไม่มีข้อมูล</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="max-w-md mx-auto bg-white shadow rounded-xl p-6 text-center">
+  <h2 class="text-2xl font-bold text-green-600 mb-4">สมัครสำเร็จ!</h2>
+  <p class="text-gray-700 mb-6">บัญชีของคุณถูกสร้างเรียบร้อยแล้ว</p>
+  <a href="{% url 'login' %}" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">กลับไปหน้า Login</a>
+</div>
+{% endblock %}
